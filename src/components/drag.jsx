@@ -54,6 +54,7 @@ const Drop = (props) => {
     const [hover, setHover] = React.useState(false)
     const [stageWidth, setStageWidth] = React.useState(300)
     const [stageHeight, setStageHeight] = React.useState(200)
+    // const dragThis = React.useRef();
     const container = React.useRef();
     const [sounds] = React.useState([
         new Audio(_1),
@@ -92,13 +93,26 @@ const Drop = (props) => {
         setStageWidth(width)
         setStageHeight(height)
     };
+    // const checkDrag = (event) => {
+    //     if (event.targetTouches.length == 1) {
+    //         var touch = event.targetTouches[0];
+    //         // Place element where the finger is
+    //         dragThis.current.left = touch.pageX + 'px';
+    //         dragThis.current.top = touch.pageY + 'px';
+    //     }
+    // }
     useEffect(() => {
         checkSize();
         window.addEventListener("resize", checkSize);
+        // dragThis.current.addEventListener('touchmove', checkDrag);
+
         return () => {
             window.removeEventListener("resize", checkSize)
+            // dragThis.current.removeEventListener("touchmove", checkDrag)
         }
     }, [])
+    
+
     return (
         <div className="noselect parentDiv" >
             <br />
@@ -155,6 +169,7 @@ const Drop = (props) => {
                     className={"noselect draggableImage " + animate}
                     onMouseEnter={() => { toggleHover(true) }}
                     onMouseLeave={() => { toggleHover(false) }}
+                    // ref={dragThis}
                 />
             </div>
             <br />
