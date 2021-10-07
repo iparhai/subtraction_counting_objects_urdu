@@ -174,13 +174,17 @@ class Quiz extends React.Component {
                   <table align="center">
                     <tbody>
                       <tr >
-                        {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
-                          return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /> </td>
-                        })}
+                        <div style={{ float: "left" }}>
+                          {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
+                            return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /></td>
+                          })}
+                        
                         <td className="center"><h1 style={{ fontSize: "3.5em" }}> {this.state.symbol} </h1></td>
-                        {[...Array(parseInt(this.state.secondNumber))].map((e, i) => {
-                          return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /></td>
-                        })}
+                       
+                          {[...Array(parseInt(this.state.secondNumber))].map((e, i) => {
+                            return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /></td>
+                          })}
+                        </div>
                       </tr>
                     </tbody>
                   </table>
