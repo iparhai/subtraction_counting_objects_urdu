@@ -16,7 +16,7 @@ function Lifes({ lifes }) {
 
     
     return (
-        <span style={{color: Colors.red}}>
+        <span style={{color: Colors.red , textShadow : "1px 1px 1px #ff0000"}}>
             {lifes > 4 && <b>{`${lifes}x`}</b> }
             {hearts}
         </span>

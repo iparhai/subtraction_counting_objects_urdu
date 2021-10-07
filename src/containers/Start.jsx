@@ -37,7 +37,7 @@ class Start extends React.Component {
                                     {text.split('').map((char, i) => {
                                         const key = `${i}`;
                                         return (
-                                            <span
+                                            <span style={{textShadow : "1px 1px 1px #ff0000"}}
                                                 key={key}
                                                 
                                             >{char}</span>
@@ -50,10 +50,10 @@ class Start extends React.Component {
                     {/* <h3>Do You Know</h3>
                     <h1>Math?</h1> */}
                 </div>
-                <p>
+                <p style={{textShadow : "1px 1px 1px #ff0000"}}>
                 گیم شروع کرنے کے لیے بٹن دبائیں۔
                 </p>
-                <Button isClicked={this.clicked}>شروع کریں</Button>
+                <Button isClicked={this.clicked} style={{textShadow : "1px 1px 1px #ff0000"}}>شروع کریں</Button>
             </div>
         )
     }
