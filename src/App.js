@@ -28,6 +28,17 @@ class App extends Component {
   gameStart = () => {
     this.props.onStartGame();
   }
+  handleURL() {
+    // const query = new URLSearchParams(this.props.location.search);
+    // const token = query.get('id')
+    // const queryParams = new URLSearchParams(window.location.search);
+    // const id = queryParams.get('id');
+
+    // alert(id)
+  }
+  componentDidMount(){
+    this.state.sound.play()
+  }
   handleSoundClick = () => {
     if (!this.state.sound.paused) {
       this.state.sound.pause()
@@ -41,14 +52,6 @@ class App extends Component {
         img: on
       })
     }
-  }
-  handleURL() {
-    // const query = new URLSearchParams(this.props.location.search);
-    // const token = query.get('id')
-    // const queryParams = new URLSearchParams(window.location.search);
-    // const id = queryParams.get('id');
-
-    // alert(id)
   }
   render() {
     return (

@@ -38,8 +38,8 @@ class Beginning extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={{textShadow : "1px 1px 1px #ff0000"}}> ...تیار ہو جاؤ</h3>
-        <h1 style={{textShadow : "1px 1px 1px #ff0000"}}>{this.state.msg}</h1>
+        <h3> ...تیار ہو جاؤ</h3>
+        <h1>{this.state.msg}</h1>
       </div>
     );
   }

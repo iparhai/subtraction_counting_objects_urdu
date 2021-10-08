@@ -53,7 +53,7 @@ class Timmer extends React.Component {
         return (
             <span>
                 {/* <i className="fas fa-clock"></i> <b>{ this.state.seconds }</b> */}
-                <b style={{textShadow : "1px 1px 1px #ff0000"}}> {this.state.totalProblems}/{this.state.limit} </b>
+                <b> {this.state.totalProblems}/{this.state.limit} </b>
             </span>
         )
     }

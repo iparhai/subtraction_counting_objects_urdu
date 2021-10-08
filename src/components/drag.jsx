@@ -14,7 +14,9 @@ import _9 from '../assets/sounds/_9.mp3';
 import _10 from '../assets/sounds/_10.mp3';
 import removeEffect from '../assets/sounds/removeItem.mp3'
 import useSound from 'use-sound';
+import dropSound from '../assets/sounds/drop.wav'
 import { useEffect } from 'react';
+
 // import _6  from '../assets/sounds/_6.mp3';
 // import _6  from '../assets/sounds/_6.mp3';
 // import _6  from '../assets/sounds/_6.mp3';
@@ -27,11 +29,15 @@ import { useEffect } from 'react';
 // import _6  from '../assets/sounds/_6.mp3';
 
 
+const dropWidth = 0;
+const dropHeight = 0;
 
+const dragWidth = 0;
+const dragHeight = 0;
 
 const URLImage = ({ image, handleClick }) => {
     const [img] = useImage(image.src);
-
+    
     return (
         <Image
             image={img}
@@ -39,6 +45,7 @@ const URLImage = ({ image, handleClick }) => {
             y={image.y}
             width={100}
             height={90}
+            // I will use offset to set origin to the center of the image
             offsetX={img ? 100 / 2 : 0}
             offsetY={img ? 90 / 2 : 0}
             onClick={handleClick}
@@ -54,8 +61,11 @@ const Drop = (props) => {
     const [hover, setHover] = React.useState(false)
     const [stageWidth, setStageWidth] = React.useState(300)
     const [stageHeight, setStageHeight] = React.useState(200)
+    const [dropS] = React.useState(new Audio(dropSound))
+
     // const dragThis = React.useRef();
     const container = React.useRef();
+
     const [sounds] = React.useState([
         new Audio(_1),
         new Audio(_2),
@@ -69,21 +79,21 @@ const Drop = (props) => {
         new Audio(_10),
 
     ]);
+
     const playSoundEffect = (soundEffectIndex) => {
         console.log("i am at " + soundEffectIndex)
         if (soundEffectIndex < sounds.length) {
             sounds[soundEffectIndex].play();
         }
     }
-
-    const toggleHover = (value) => {
+    const toggleHover = (value) =>{
         setHover(value)
     }
     var animate;
-    if (hover) {
+    if(hover){
         animate = "animate__animated animate__heartBeat"
     }
-    else {
+    else{
         animate = ""
     }
     const checkSize = () => {
@@ -112,7 +122,6 @@ const Drop = (props) => {
         }
     }, [])
     
-
     return (
         <div className="noselect parentDiv" >
             <br />
@@ -122,6 +131,7 @@ const Drop = (props) => {
                     // register event position
                     stageRef.current.setPointersPositions(e);
                     // add image
+                    dropS.play()
                     setImages(
                         images.concat([
                             {
@@ -164,6 +174,9 @@ const Drop = (props) => {
                     src={props.img}
                     draggable={props.count < 10 ? "true" : "false"}
                     onDragStart={(e) => {
+                        dragUrl.current = e.target.src;
+                    }}
+                    onTouchStart = {(e) => {
                         dragUrl.current = e.target.src;
                     }}
                     className={"noselect draggableImage " + animate}

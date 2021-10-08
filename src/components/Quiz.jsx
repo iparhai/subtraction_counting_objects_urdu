@@ -157,13 +157,13 @@ class Quiz extends React.Component {
     return (
       <section className="show-up" style={{ width: "100%", height: "100vh" }}>
         {/* <Hints currentProblem={this.state.problem}/> */}
-        <div style={{ width: "100%" }} >
+        <div >
           {this.state.modalShowing ? (
             this.state.modal
           ) : (
             <div>
               {sessionData.dif != "b" ?
-                <div style={{ width: "100%", float: "left" }} >
+                <div>
                   {/* <section>
                     <blockquote class="electric bubble">Autobots,<span>Attack!</span></blockquote>
                   </section> */}
@@ -173,22 +173,18 @@ class Quiz extends React.Component {
                 <div>
                   {/* <table align="center">
                     <tbody>
-                      <tr style={{width : "100%"}}>
-                        <div style={{ float: "left" }}>
-                          {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
-                            return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /></td>
-                          })}
-                        </div>
-                        <td className="center"><h1 style={{ fontSize: "3.5em", textShadow: "1px 1px 1px #ff0000" }}> {this.state.symbol} </h1></td>
-                        <div style={{ float: "left" }}>
-                          {[...Array(parseInt(this.state.secondNumber))].map((e, i) => {
-                            return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /></td>
-                          })}
-                        </div>
+                      <tr >
+                        {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
+                          return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /> </td>
+                        })}
+                        <td className="center"><h1 style={{ fontSize: "3.5em" }}> {this.state.symbol} </h1></td>
+                        {[...Array(parseInt(this.state.secondNumber))].map((e, i) => {
+                          return <td ><img key={i} src={this.state.randomImage} className="questionImage " draggable="false" /></td>
+                        })}
                       </tr>
                     </tbody>
                   </table> */}
-                  <div className="objectRow" style={{ width: "100%", float: "left" }}>
+                  <div className="objectRow" style={{ width: "100%" }}>
                     <div className="objectLeft">
                       {[...Array(parseInt(this.state.firstNumber))].map((e, i) => {
                         return <img key={i} src={this.state.randomImage} className="questionImage " draggable="false" />
@@ -201,10 +197,10 @@ class Quiz extends React.Component {
                       })}
                     </div>
                   </div>
+
+                  <Drop incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />
                 </div>
               }
-              <Drop incCount={(number) => { this.setState({ answer: this.state.answer + number }) }} decCount={(number) => { this.setState({ answer: this.state.answer - number }) }} count={this.state.answer} img={this.state.randomImage} />
-
               {/* <input
                 ref={input => {
                   this.answerInput = input;
